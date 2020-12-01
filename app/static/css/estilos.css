@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+}
+
+html{
+    background: rgb(129,3,3);
+    background: radial-gradient(circle, rgba(129,3,3,1) 55%, rgba(0,0,0,1) 100%);
+}
+
+.boss{
+    width: 30vw;
+	height: 60vh;
+	min-height: 550px;
+	position: relative;
+    margin: 3vw 3vw 3vw 3vw;
+}
+
+.contenedor{
+    margin: 1vw;
+    width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: inline-flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-flex: 0;
+	-ms-flex: none;
+	-webkit-box-pack: center;
+    -ms-flex-pack: center;
+    align-self: center;
+	justify-content: center;
+	/*flex: none;*/
+	position: relative;
+}
+
+.title{
+    font-family: 'Exo', sans-serif;
+	position: absolute;
+	font-size: 5vw;
+	margin: 0;
+	pointer-events: none;
+	bottom: 10%;
+    left: 35%;
+    color: #fff;
+}
+
+.fondo-idx{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/fondoindex.jpg);
+    background-size: 100%;
+    margin-top: 0;
+    align-content: center;
+}
+
+.main-logo{
+    margin-left: 30%;
+    margin-top: 4rem;
+}
+
+.logo{
+    width: 21rem;
+    height: 6rem;
+    position: fixed;
+    margin: 1rem;
+}
