@@ -56,3 +56,19 @@ class Bosse(Resource):
             'video':request.json['video']
         }})
         return jsonify({"update":request.json})
+    
+    
+    def delete(self,id):
+        self.abort_if_not_exist(id)
+        boss= db.db.bosses_binding_of_isaac.find_one({'id':id})
+        del boss['_id']
+        db.db.bosses_binding_of_isaac.delete_one({'id':id})
+        return jsonify({"delete":boss})
+
+    def abort_if_not_exist(self,id):
+        if not db.db.bosses_binding_of_isaac.find_one({'id':id}):
+            abort(jsonify({'status':'404', 'error':f'The boss with id:{id} not found'}))
+    
+    def abort_if_id_exist(self,id):
+        if db.db.bosses_binding_of_isaac.find_one({'id':id}):
+            abort(jsonify({'status':'409', 'error':f'The boss with id:{id} already exist'}))
