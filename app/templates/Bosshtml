@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jefes.css') }}">
+</head>
+<body class="fondo">
+  <div class="degradao">
+    <header class="header">
+      <a href="/" class="navi"><img src="{{ url_for('static', filename='img/back.png') }}" alt=""> Atras</a>
+      {{ jefe.name }}
+      <a href="{{ jefe.id + 1 }}" class="navi-ri">Siguiente <img src="{{ url_for('static', filename='img/woop.png') }}" alt=""></a>
+    </header>
+    <div class="row">
+      <img class="column resize" src="{{ jefe.image }}">
+      <div class="column lista">
+        <div class="cont-img stats">
+          <img src="{{ url_for('static', filename='img/HUD_heart_red_full.png') }}" alt="" style="width: 3rem; height: 3rem;">
+          <span class="desc">{{ jefe.base_hp }}</span>
+        </div>
+        <div class="cont-img stats">
+          <img src="{{ url_for('static', filename='img/room.png') }}" alt="" style="width: 3rem; height: 3rem;">
+          <span class="desc">{{ jefe.rooms_appear }}</span>
+        </div>
+      </div>
+      <iframe width="1000" height="600" class="column video"
+      src="https://www.youtube.com/embed/{{ jefe.video }}"
+      frameborder="0">
+      </iframe>
+    </div>
+  </div>
+</body>
+</html>
