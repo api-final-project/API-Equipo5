@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binding of isaac</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full-page-scroll.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img class="logo" src="{{ url_for('static', filename='img/logoisaac.png') }}" alt="">
+    <div id="main" class="scroll-container">
+        <section class="section1 fondo-idx">
+            <img class="main-logo" src="{{ url_for('static', filename='img/logoisaac.png') }}" alt="">
+        </section>
+        {% for boss in jefes %}
+            <section class="section1">
+                <div class="contenedor">
+                    <div>
+                        <a href="/boss/{{ boss.id }}" class="vista"><img src="{{ boss.image }}" class="size boss"></a>
+                        <h1 class="title">{{ boss.name }}</h1>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+      </div>
+      <script src="{{ url_for('static', filename='js/full-page-scroll.js') }}"></script>
+      <script type="text/javascript">
+        new fullScroll({
+            mainElement: "main",
+            displayDots: false,
+            dotsPosition: "right",
+            animateTime: 0.7,
+            animateFunction: "ease",
+      });
+      </script>
+</body>
+</html>
