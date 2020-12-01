@@ -72,3 +72,28 @@ class Bosse(Resource):
     def abort_if_id_exist(self,id):
         if db.db.bosses_binding_of_isaac.find_one({'id':id}):
             abort(jsonify({'status':'409', 'error':f'The boss with id:{id} already exist'}))
+            
+class AllBosses(Resource):
+    def get(self):
+        all_bosses = list(db.db.bosses_binding_of_isaac.find())
+        for boss in all_bosses:
+            del boss['_id']
+        return jsonify({'bosses':all_bosses})
+    
+@app.route('/')
+def inicio():
+    boss = list(db.db.bosses_binding_of_isaac.find())
+    return render_template('index.html', jefes = boss)
+
+@app.route("/boss/<int:id>")
+def boss(id):
+    boss = dict(db.db.bosses_binding_of_isaac.find_one({"id":id}))
+    return render_template('Boss.html', jefe = boss)             
+
+api.add_resource(Test,'/test/')
+api.add_resource(AllBosses,'/all_bosses/')
+api.add_resource(Bosse,'/new/boss/','/boss/<int:id>')
+
+if __name__ == "__main__":
+    app.run(load_dotenv=True,port=8080)
+
